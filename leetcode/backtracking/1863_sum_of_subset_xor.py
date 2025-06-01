@@ -13,5 +13,5 @@ class Solution:
 
 
 s = Solution()
-res = s.subsetXORSum([5, 1, 6])
+res = s.subsetXORSum([1, 3])
 print(res)
