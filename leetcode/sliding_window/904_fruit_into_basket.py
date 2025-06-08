@@ -3,22 +3,22 @@ from collections import defaultdict
 
 
 class Solution:
-	def totalFruit(self, fruits: List[int]) -> int:
-		counts: Dict[int, int] = defaultdict(lambda: 0)
-		j = 0
-		result = 0
-		for i in range(len(fruits)):
-			f_type = fruits[i]
-			counts[f_type] += 1
-			while len(counts) > 2:
-				prev_type = fruits[j]
-				counts[prev_type] -= 1
-				if counts[prev_type] == 0:
-					counts.pop(prev_type)
-				j += 1
-			result = max(result, i - j + 1)
+    def totalFruit(self, fruits: List[int]) -> int:
+        counts: Dict[int, int] = defaultdict(lambda: 0)
+        j = 0
+        result = 0
+        for i in range(len(fruits)):
+            f_type = fruits[i]
+            counts[f_type] += 1
+            while len(counts) > 2:
+                prev_type = fruits[j]
+                counts[prev_type] -= 1
+                if counts[prev_type] == 0:
+                    counts.pop(prev_type)
+                j += 1
+            result = max(result, i - j + 1)
 
-		return result
+        return result
 
 
 s = Solution()

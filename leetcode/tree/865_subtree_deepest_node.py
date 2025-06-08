@@ -3,32 +3,32 @@ from typing import Optional, Tuple
 
 # Definition for a binary tree node.
 class TreeNode:
-	def __init__(self, val=0, left=None, right=None):
-		self.val = val
-		self.left = left
-		self.right = right
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
-	def __repr__(self) -> str:
-		return f"{self.val} {self.left} {self.right}"
+    def __repr__(self) -> str:
+        return f"{self.val} {self.left} {self.right}"
 
 
 class Solution:
-	def helper(self, root: Optional[TreeNode]) -> Tuple[Optional[TreeNode], int]:
-		if root is None:
-			return None, 0
-		leftNode, leftDepth = self.helper(root.left)
-		rightNode, rightDepth = self.helper(root.right)
-		if leftDepth == rightDepth:
-			return (root, leftDepth + 1)
+    def helper(self, root: Optional[TreeNode]) -> Tuple[Optional[TreeNode], int]:
+        if root is None:
+            return None, 0
+        leftNode, leftDepth = self.helper(root.left)
+        rightNode, rightDepth = self.helper(root.right)
+        if leftDepth == rightDepth:
+            return (root, leftDepth + 1)
 
-		if leftDepth < rightDepth:
-			return (rightNode, rightDepth + 1)
+        if leftDepth < rightDepth:
+            return (rightNode, rightDepth + 1)
 
-		return (leftNode, leftDepth + 1)
+        return (leftNode, leftDepth + 1)
 
-	def subtreeWithAllDeepest(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-		res, _ = self.helper(root)
-		return res
+    def subtreeWithAllDeepest(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        res, _ = self.helper(root)
+        return res
 
 
 node7 = TreeNode(7)
