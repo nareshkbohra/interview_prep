@@ -25,7 +25,6 @@ class Solution:
                     if new_cost < min_distance[neighbor]:
                         queue.append((new_cost, neighbor))
                         min_distance[neighbor] = new_cost
-                pass
             steps += 1
         if min_distance[dst] == sys.maxsize:
             return -1

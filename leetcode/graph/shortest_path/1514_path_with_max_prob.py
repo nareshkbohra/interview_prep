@@ -1,7 +1,6 @@
 from typing import List, Dict, Tuple
 from collections import defaultdict
 import heapq
-from time import sleep
 
 
 class Solution:
