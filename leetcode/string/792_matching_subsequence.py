@@ -1,5 +1,6 @@
 from typing import List
 from collections import defaultdict
+import bisect
 
 
 class Solution:
@@ -13,16 +14,13 @@ class Solution:
             lastIndex = -1
             wordFound = True
             for ch in word:
-                chFound = False
                 indices = charIndexList[ch]
-                for index in indices:
-                    if index > lastIndex:
-                        lastIndex = index
-                        chFound = True
-                        break
-                if not chFound:
+                pos = bisect.bisect_right(indices, lastIndex)
+                if pos == len(indices):
                     wordFound = False
                     break
+                else:
+                    lastIndex = indices[pos]
 
             if wordFound:
                 result += 1
@@ -31,7 +29,7 @@ class Solution:
 
 
 s = Solution()
-st = "dsahjpjauf"
-words = ["ahjpjau", "ja", "ahbwzgqnuk", "tnmlanowax"]
+st = "abcde"
+words = ["a", "bb", "acd", "ace"]
 res = s.numMatchingSubseq(st, words)
 print(res)
