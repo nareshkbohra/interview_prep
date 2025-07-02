@@ -4,6 +4,8 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+
 class Solution:
     def helper(self, root):
         if root is None:
@@ -21,4 +23,3 @@ class Solution:
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         return self.helper(root)[0]
-

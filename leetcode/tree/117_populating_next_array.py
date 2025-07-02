@@ -1,4 +1,5 @@
 from collections import deque
+
 """
 # Definition for a Node.
 class Node:
@@ -9,8 +10,9 @@ class Node:
         self.next = next
 """
 
+
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: "Node") -> "Node":
         previousNode = None
         queue = deque([root])
         while len(queue):

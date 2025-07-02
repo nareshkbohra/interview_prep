@@ -48,6 +48,6 @@ class Solution:
 
         pathLen = len(path_)
         if pathLen % 2 == 1:
-            return [path_[pathLen//2]]
+            return [path_[pathLen // 2]]
 
-        return [path_[pathLen//2], path_[pathLen//2-1]]
+        return [path_[pathLen // 2], path_[pathLen // 2 - 1]]

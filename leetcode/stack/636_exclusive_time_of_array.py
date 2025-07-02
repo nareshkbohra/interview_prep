@@ -15,7 +15,7 @@ class Solution:
 
         """
         lastPid = -1
-        result = [0]*n
+        result = [0] * n
         stack = deque()
         for log in logs:
             pid, operation, timestamp = log.split(":")
@@ -23,18 +23,19 @@ class Solution:
             if operation == "start":
                 if len(stack):
                     jobId, startTime = stack[-1]
-                    result[jobId] += (timestamp-startTime)
+                    result[jobId] += timestamp - startTime
                 stack.append([int(pid), timestamp])
             else:
                 jobId, startTime = stack.pop()
-                result[int(jobId)] += (timestamp - startTime+1)
+                result[int(jobId)] += timestamp - startTime + 1
                 if len(stack):
-                    stack[-1][1] = timestamp+1
+                    stack[-1][1] = timestamp + 1
 
         return result
 
+
 s = Solution()
 n = 2
-logs = ["0:start:0","0:start:2","0:end:5","1:start:6","1:end:6","0:end:7"]
+logs = ["0:start:0", "0:start:2", "0:end:5", "1:start:6", "1:end:6", "0:end:7"]
 res = s.exclusiveTime(n, logs)
 print(res)

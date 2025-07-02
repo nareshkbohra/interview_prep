@@ -10,6 +10,6 @@ class Solution:
         currSum = 0
         for num in nums:
             currSum += num
-            result += counter[currSum-k]
+            result += counter[currSum - k]
             counter[currSum] += 1
         return result

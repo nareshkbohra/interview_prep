@@ -1,4 +1,6 @@
 from collections import defaultdict
+
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,7 +9,7 @@ from collections import defaultdict
 #         self.right = right
 class Solution:
     def __init__(self):
-        self.memory = defaultdict(lambda : 0)
+        self.memory = defaultdict(lambda: 0)
         self.duplicates = []
 
     def helper(self, root):
@@ -20,8 +22,7 @@ class Solution:
         return result
 
     def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
-        self.memory = defaultdict(lambda : 0)
+        self.memory = defaultdict(lambda: 0)
         self.duplicates = []
         self.helper(root)
         return self.duplicates
-

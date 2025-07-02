@@ -6,7 +6,7 @@ class Solution:
         currMax, currMin = 1, 1
         result = -float("inf")
         for num in nums:
-            vals = num, num*currMax, num*currMin
+            vals = num, num * currMax, num * currMin
             currMax, currMin = max(vals), min(vals)
             result = max(result, currMax)
         return result

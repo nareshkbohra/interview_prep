@@ -19,9 +19,9 @@ class Solution:
             if found == k:
                 return currValue
 
-            if x+1 < rows:
-                heapq.heappush(queue, (matrix[x+1][y], x+1, y))
-            if y+1 < cols:
-                heap.heappush(queue, (matrix[x][y+1], x, y+1))
+            if x + 1 < rows:
+                heapq.heappush(queue, (matrix[x + 1][y], x + 1, y))
+            if y + 1 < cols:
+                heap.heappush(queue, (matrix[x][y + 1], x, y + 1))
 
         return -1
