@@ -1,33 +1,33 @@
-[x] snake and ladder
-[] vending machine
-[] traffic signal
-[] tic tac toe
-[] task management system
-[] stack overflow
-[] splitwise
-[] social networking service
-[] ride sharing service
-[] restaurant management system
-[] pub sub system
-[] parking lot
-[] online stock brokerage system
-[] online shopping service
-[] online auction system
-[] music streaming service
-[] movie ticket booking system
-[] lru cache
-[] logging framework
-[] linkedin
-[] library management system
-[] hotel management system
-[] food delivery service
-[] elevator system
-[] digital wallet service
-[] cricinfo
-[] course registration system
-[] concert ticket booking system
-[] coffee vending machine
-[] chess game
-[] car rental system
-[] atm
-[] airline management system
+- [x] snake and ladder
+- [ ] vending machine
+- [ ] traffic signal
+- [ ] tic tac toe
+- [ ] task management system
+- [ ] stack overflow
+- [ ] splitwise
+- [ ] social networking service
+- [ ] ride sharing service
+- [ ] restaurant management system
+- [ ] pub sub system
+- [ ] parking lot
+- [ ] online stock brokerage system
+- [ ] online shopping service
+- [ ] online auction system
+- [ ] music streaming service
+- [ ] movie ticket booking system
+- [ ] lru cache
+- [ ] logging framework
+- [ ] linkedin
+- [ ] library management system
+- [ ] hotel management system
+- [ ] food delivery service
+- [ ] elevator system
+- [ ] digital wallet service
+- [ ] cricinfo
+- [ ] course registration system
+- [ ] concert ticket booking system
+- [ ] coffee vending machine
+- [ ] chess game
+- [ ] car rental system
+- [ ] atm
+- [ ] airline management system
