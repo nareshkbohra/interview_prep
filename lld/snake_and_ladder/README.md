@@ -12,3 +12,60 @@
 - Game should give the list of players in order of their reaching top position [m][n].
 - As a feature, game can be ended if one of the player reaches the end. Support above and this requirement as
   type of game.
+
+
+UML:
+```mermaid
+classDiagram
+
+class Cell {
+  +int x
+  +int y
+  +__eq__(other: Cell) bool
+  +__repr__() str
+  +__hash__() int
+}
+
+class Jumper {
+  +Cell start
+  +Cell end
+  +__repr__() str
+}
+
+class Board {
+  +int rows
+  +int cols
+  +Dict~Cell, Cell~ jumps
+  +next(curr_cell: Cell, roll: int) Cell
+  +verify_cell(cell: Cell)
+}
+
+class Dice {
+  +int count
+  +roll() int
+}
+
+class Player {
+  +str name
+  +int pid
+  +Cell position
+}
+
+class SnakeAndLadder {
+  +List~Player~ players
+  +Dice dice
+  +Board board
+  +Deque~Player~ turns
+  +Cell final_position
+  +start()
+}
+
+Jumper --> Cell : uses
+Board --> Jumper : uses
+Board --> Cell : uses
+Player --> Cell : has-a
+SnakeAndLadder --> Player : manages
+SnakeAndLadder --> Dice : uses
+SnakeAndLadder --> Board : uses
+SnakeAndLadder --> Cell : final position
+```
