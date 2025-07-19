@@ -1,5 +1,5 @@
 ## Problems
----
+- [ ] News feed system
 - [ ] Rate limiter
 - [ ] Consistent hashing
 - [ ] Key-value store
@@ -7,7 +7,6 @@
 - [ ] Url shortener
 - [ ] Web crawler
 - [ ] Notification system
-- [ ] News feed system
 - [ ] Chat system
 - [ ] Search autocomplete system
 - [ ] Youtube

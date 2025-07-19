@@ -1,5 +1,4 @@
 ## Problems
----
 - [x] snake and ladder
 - [ ] vending machine
 - [ ] traffic signal
