@@ -1,5 +1,5 @@
 ## Problems
-- [ ] News feed system
+- [x] News feed system
 - [ ] Rate limiter
 - [ ] Consistent hashing
 - [ ] Key-value store

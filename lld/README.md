@@ -1,5 +1,6 @@
 ## Problems
 - [x] snake and ladder
+- [x] parking lot
 - [ ] vending machine
 - [ ] traffic signal
 - [ ] tic tac toe
@@ -10,7 +11,6 @@
 - [ ] ride sharing service
 - [ ] restaurant management system
 - [ ] pub sub system
-- [ ] parking lot
 - [ ] online stock brokerage system
 - [ ] online shopping service
 - [ ] online auction system
