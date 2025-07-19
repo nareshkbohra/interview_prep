@@ -32,3 +32,53 @@ This will have high time complexity but low space complexity.
 Maintain a heap for per gate per type and whenever an entry is made, make sure we remove it from other gates.
 
 Removing again might be O(n) so that can be furthur optimized by maintaining a hash map for each heap.
+
+UML:
+```mermaid
+classDiagram
+
+class Vehicle {
+  +VehicleSize size
+  +str number
+}
+
+class Slot {
+  +int floor
+  +int index
+  +VehicleSize type
+}
+
+class Gate {
+  +int floor
+  +int index
+  +int vertical_distance
+  +Dict~VehicleSize, List~Tuple~int,Slot~~~ slots
+  +enter(vehicle_size): Slot
+  +already_occupied(slot: Slot)
+  +add_slot(slot: Slot)
+}
+
+class ParkingLot {
+  +Dict~str, Slot~ vehicle_to_slot_mapping
+  +List~Gate~ gates
+  +enter(gate_number: int, vehicle: Vehicle)
+  +exit(vehicle_number: str)
+  +get_parking_status(): Dict~VehicleSize, int~
+  +find_vehicle(vehicle_number: str): Tuple~int,int~
+  +occupied_slots(): Dict~str, Tuple~int,int,VehicleSize~~
+}
+
+class VehicleSize {
+  <<enumeration>>
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+Vehicle --> VehicleSize : uses
+Slot --> VehicleSize : uses
+Gate "1" o-- "*" Slot : manages
+ParkingLot "1" o-- "*" Gate : contains
+ParkingLot "1" o-- "*" Vehicle : manages
+ParkingLot "1" o-- "*" Slot : tracks
+```
