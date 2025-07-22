@@ -1,6 +1,7 @@
 ## Problems
 - [x] snake and ladder
 - [x] parking lot
+- [x] elevator system
 - [ ] vending machine
 - [ ] traffic signal
 - [ ] tic tac toe
@@ -22,7 +23,6 @@
 - [ ] library management system
 - [ ] hotel management system
 - [ ] food delivery service
-- [ ] elevator system
 - [ ] digital wallet service
 - [ ] cricinfo
 - [ ] course registration system
