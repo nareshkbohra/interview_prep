@@ -1,6 +1,7 @@
 from enum import Enum
 import heapq
 from time import sleep
+from abc import ABC, abstractmethod
 
 
 class Direction(Enum):
@@ -40,6 +41,61 @@ class RequestQueue:
         return len(self.requests) == 0
 
 
+class ElevatorState(ABC):
+    def __init__(self, elevator: "Elevator"):
+        self.elevator = elevator
+
+    @abstractmethod
+    def step(self):
+        pass
+
+
+class IdleElevatorState(ElevatorState):
+    def step(self):
+        elevator = self.elevator
+        if not elevator.up_requests_queue.is_empty():
+            elevator.current_state = elevator.up_state
+        elif not elevator.down_requests_queue.is_empty():
+            elevator.current_state = elevator.down_state
+
+        # If both queue are empty then stay at current state
+
+
+class UpElevatorState(ElevatorState):
+    def step(self):
+        elevator = self.elevator
+        if elevator.up_requests_queue.is_empty():
+            elevator.current_state = elevator.idle_state
+            return
+
+        # Just move to 1 floor above and see if the floor is in request
+        elevator.current_floor += 1
+        next_request = elevator.up_requests_queue.next_item()
+        if next_request == elevator.current_floor:
+            print(f"Reached floor {next_request}")
+            sleep(1)
+            elevator.up_requests_queue.pop()
+
+
+class DownElevatorState(ElevatorState):
+    def step(self):
+        """
+        Here code is exactly duplicated from up state, but keeping as is
+        """
+        elevator = self.elevator
+        if elevator.down_requests_queue.is_empty():
+            elevator.current_state = elevator.idle_state
+            return
+
+        # Just move to 1 floor below and see if the floor is in request
+        elevator.current_floor -= 1
+        next_request = elevator.down_requests_queue.next_item()
+        if next_request == elevator.current_floor:
+            print(f"Reached floor {next_request}")
+            sleep(1)
+            elevator.down_requests_queue.pop()
+
+
 class Elevator:
     def __init__(self, max_floor: int, min_floor: int):
         self.max_floor = max_floor
@@ -48,8 +104,13 @@ class Elevator:
         self.up_requests_queue = RequestQueue(min_first=True)
         self.down_requests_queue = RequestQueue(min_first=False)
 
-        self.current_dir = Direction.IDLE
         self.current_floor = 0
+
+        self.idle_state = IdleElevatorState(self)
+        self.up_state = UpElevatorState(self)
+        self.down_state = DownElevatorState(self)
+
+        self.current_state = self.idle_state
 
     def add_external_request(self, floor: int, direction: Direction):
         if direction == Direction.UP:
@@ -75,39 +136,17 @@ class Elevator:
 
         NOTE: Here changing direction is also a step which simplify the design.
         """
-        if self.current_dir == Direction.IDLE:
-            if not self.up_requests_queue.is_empty():
-                self.current_dir = Direction.UP
-            elif not self.down_requests_queue.is_empty():
-                self.current_dir = Direction.DOWN
-            return
+        self.current_state.step()
 
-        if self.current_dir == Direction.UP:
-            if self.up_requests_queue.is_empty():
-                self.current_dir = Direction.IDLE
-                return
+    @property
+    def current_dir(self):
+        if self.current_state is self.idle_state:
+            return Direction.IDLE
 
-            # Just move to 1 floor above and see if the floor is in request
-            self.current_floor += 1
-            next_request = self.up_requests_queue.next_item()
-            if next_request == self.current_floor:
-                print(f"Reached floor {next_request}")
-                sleep(1)
-                self.up_requests_queue.pop()
+        if self.current_state is self.up_state:
+            return Direction.UP
 
-            return
-
-        # we are here which means we are moving in down direction
-        if self.down_requests_queue.is_empty():
-            self.current_dir = Direction.IDLE
-            return
-
-        self.current_floor -= 1
-        next_request = self.down_requests_queue.next_item()
-        if next_request == self.current_floor:
-            print(f"Reached floor {next_request}")
-            sleep(1)
-            self.down_requests_queue.pop()
+        return Direction.DOWN
 
     def cost_to_reach(self, floor: int, direction: Direction):
         """

@@ -51,7 +51,7 @@ def test_step_movement_up_and_down(elevator):
 
 
 def test_idle_behavior_with_no_requests(elevator):
-    elevator.current_dir = Direction.IDLE
+    elevator.current_state = elevator.idle_state
     floor = elevator.current_floor
 
     for _ in range(3):
@@ -113,14 +113,14 @@ def test_external_request_skips_wrong_direction(system):
 
 def test_cost_to_reach_logic(elevator):
     elevator.current_floor = 5
-    elevator.current_dir = Direction.IDLE
+    elevator.current_state = elevator.idle_state
     assert elevator.cost_to_reach(8, Direction.UP) == 3
 
-    elevator.current_dir = Direction.UP
+    elevator.current_state = elevator.up_state
     assert elevator.cost_to_reach(7, Direction.UP) == 2
     assert elevator.cost_to_reach(2, Direction.UP) == 1_000_000
 
-    elevator.current_dir = Direction.DOWN
+    elevator.current_state = elevator.down_state
     elevator.current_floor = 10
     assert elevator.cost_to_reach(7, Direction.DOWN) == 3
     assert elevator.cost_to_reach(12, Direction.DOWN) == 1_000_000
