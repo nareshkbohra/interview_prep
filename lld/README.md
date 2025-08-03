@@ -2,7 +2,7 @@
 - [x] snake and ladder
 - [x] parking lot
 - [x] elevator system
-- [ ] vending machine
+- [x] vending machine
 - [ ] traffic signal
 - [ ] tic tac toe
 - [ ] task management system

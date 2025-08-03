@@ -1,11 +1,11 @@
 ## Problems
 - [x] News feed system
+- [ ] Web crawler
 - [ ] Rate limiter
 - [ ] Consistent hashing
 - [ ] Key-value store
 - [ ] Unique id generator in distributed systems
 - [ ] Url shortener
-- [ ] Web crawler
 - [ ] Notification system
 - [ ] Chat system
 - [ ] Search autocomplete system
