@@ -4,7 +4,6 @@
 - [x] parking lot
 - [x] elevator system
 - [x] vending machine
-- [x] snake and ladder
 
 ### Easy
 - [ ] stack overflow
