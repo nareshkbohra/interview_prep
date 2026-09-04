@@ -4,6 +4,7 @@
 - [x] parking lot
 - [x] elevator system
 - [x] vending machine
+- [x] connect four
 
 ### Easy
 - [ ] stack overflow
